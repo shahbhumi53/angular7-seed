@@ -1,0 +1,100 @@
+// -- css for ngx-datatable cell
+.custom-table-cell div {
+  //background-color: rebeccapurple !important;
+  padding-top: 20px !important;
+}
+
+
+// -- for dialogue box
+.custom-dialog-container .mat-dialog-container {
+  /* add your styles */
+  border-radius: 8px !important;
+  padding: 24px 24px 45px 24px !important;
+  margin: 0 auto;
+  @media screen and (min-width: 320px) and (max-width: 560px) {
+    height: auto;
+  }
+}
+
+// -- for dialogue box displayed from cerebro page
+.custom-dialog-container-cerebro {
+  height: 80%;
+
+  .mat-dialog-container {
+    border-radius: 8px !important;
+  }
+}
+
+.custom-cerebro-overflow-data {
+  height: 50%;
+  overflow: auto;
+}
+
+
+// -- css for ngx-datatable cell on contacts page
+.custom-table-cell-contacts div {
+  //background-color: rebeccapurple !important;
+  padding-top: 5px !important;
+
+  // -- for default image icon for user profile
+  .default-img-icon {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+  }
+
+  // -- if more phone numbers are there then show plus icon
+  .phone-plus-icon {
+    display: -webkit-box;
+
+    img {
+      margin-left: 7px;
+      width: 17px;
+    }
+  }
+
+  // -- if more secondary emails are there then show plus icon --
+  .secondary-email-plus-icon {
+    display: inline-block;
+
+    img {
+      width: 17px;
+    }
+
+    p {
+      padding-right: 5px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.custom-cursor-copy {
+  cursor: url("assets/img/scissors.png"), auto;
+}
+
+// -- on search-person and contacts page, show the delimitation border between the column of table
+.right-border-search {
+  border-right: 1px solid #e1e5eb;
+  height: 50px;
+}
+
+.right-border {
+  border-right: 1px solid #e1e5eb;
+  height: 50px;
+}
+
+.datatable-header .datatable-header-inner .datatable-row-center .datatable-header-cell.right-border p {
+  margin-bottom: 0;
+  line-height: 3.3;
+}
+
+.datatable-header .datatable-header-inner .datatable-row-center .datatable-header-cell.right-border {
+  padding: 0;
+}
+
+.datatable-header .datatable-header-inner .datatable-row-center .datatable-header-cell.right-border .col-md-6:first-of-type {
+  line-height: 4;
+  border-right: 1px solid #e1e5eb;
+  padding-right: 5px;
+}

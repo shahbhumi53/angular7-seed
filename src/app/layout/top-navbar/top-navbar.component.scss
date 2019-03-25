@@ -1,0 +1,17 @@
+@media screen and (min-width:320px) and (max-width:560px) {
+  .app_sidebar-menu-collapsed #app_main-menu-wrapper .nav-link.menu-trigger,
+  .app_sidebar-menu-collapsed #app_main-menu-wrapper .sidebar-header,
+  .app_sidebar-menu-collapsed #app_main-menu-wrapper .sidebar-menu-header,
+  .app_sidebar-menu-collapsed #app_main-menu-wrapper .sidebar-menu-profile,
+  .app_sidebar-menu-collapsed #app_main-menu-wrapper .sidebar-menu-summary,
+  .app_sidebar-menu-collapsed #app_main-menu-wrapper .sidebar-profile,
+  .app_sidebar-menu-collapsed #app_main-menu-wrapper .sidebar-summary {
+    display: block !important;
+  }
+  .navbar-custom{
+    box-shadow: unset !important;
+  }
+}
+.nav-link.menu-trigger{
+  display: block !important;
+}
