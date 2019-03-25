@@ -1,0 +1,34 @@
+<nav id="app_main-menu-wrapper" class="hide-mobile-menu">
+  <ul class="navbar-nav nav-logo">
+    <li class="nav-item logo-wrapper">
+      <a>
+        <div class="logo">
+          <img src="assets/img/logo/logo-carré.png" alt="Logo">
+        </div>
+        <h1 class="brand-text">cold<span>crm</span></h1>
+      </a>
+    </li>
+    <li class="nav-item pull-right">
+      <a md-ripple href="javascript:void(0)" role="button" (click)="toggleMenuSideabar()" class="nav-link menu-trigger">
+        <i class="mdi mdi-backburger"></i>
+      </a>
+    </li>
+  </ul>
+  <div class="sidebar-inner sidebar-push" malihu-scrollbar [scrollbarOptions]="scrollbarOptions">
+    <ul class="nav nav nav-pills flex-columnnav nav-pills flex-columnnav nav-pills flex-column flex-column"  >
+      <li routerLinkActive="active"><a md-ripple class="" [routerLink]="['search-person']"><img src="https://image.flaticon.com/icons/svg/122/122932.svg"  alt="Logo">Search Person</a></li>
+      <li routerLinkActive="active" class="hide-mobile-menu"><a md-ripple class="" [routerLink]="['contacts']"><img src="https://image.flaticon.com/icons/svg/176/176668.svg" alt="Logo">Contacts</a></li>
+      <li routerLinkActive="active"><a md-ripple class="" [routerLink]="['cerebro']"><img src="https://image.flaticon.com/icons/svg/882/882998.svg" alt="Logo">Cerebro</a></li>
+      <li routerLinkActive="active" class="hide-mobile-menu"><a md-ripple class="" [routerLink]="['bulk-tools']"><img src="https://image.flaticon.com/icons/svg/249/249092.svg" alt="Logo">Bulk Tools</a></li>
+      <li routerLinkActive="active" class="hide-mobile-menu"><a md-ripple class="" [routerLink]="['lists']"><img src="https://image.flaticon.com/icons/svg/922/922647.svg" alt="Logo">Lists</a></li>
+      <li routerLinkActive="active" *ngIf="!isPriceHide" class="hide-mobile-menu"><a md-ripple class="" [routerLink]="['pricing']"><img src="https://image.flaticon.com/icons/svg/265/265704.svg"> Pricing</a></li>
+      <li routerLinkActive="active"><a md-ripple class="" [routerLink]="['settings']"><img src="https://image.flaticon.com/icons/svg/179/179643.svg">Settings</a></li>
+      <li routerLinkActive="active" class="hide-mobile-menu"><a md-ripple class="" href="https://intercom.help/coldcrm/" target="_blank" ><img src="https://image.flaticon.com/icons/png/512/237/237188.png">Help</a></li>
+      <li routerLinkActive="active"><a md-ripple (click)="auth.logout()" class=""><img src="https://image.flaticon.com/icons/svg/827/827686.svg" alt="Logo">Logout</a></li>
+      <!--<li class="CHANGE_THIS"><a>Update</a></li>-->
+      <!--<li routerLinkActive="active"><a md-ripple class="" [routerLink]="['contacts-pipeline']"><img src="https://image.flaticon.com/icons/svg/941/941596.svg" alt="Logo">Contacts Pipeline</a></li>-->
+      <!--<li routerLinkActive="active"><a md-ripple class="" [routerLink]="['find-assets']"><i class="zmdi zmdi-account"></i>Find Asset</a></li>-->
+      <!--<li routerLinkActive="active"><a md-ripple class="" [routerLink]="['bulk-email-find']"><i class="zmdi zmdi-account"></i>Bulk Email Find</a></li><li routerLinkActive="active"><a md-ripple class="" [routerLink]="['bulk-phone-find']"><i class="zmdi zmdi-account"></i>Bulk Phone Find</a></li>-->
+    </ul>
+  </div>
+</nav>

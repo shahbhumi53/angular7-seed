@@ -1,1 +1,781 @@
-/* You can add global styles to this file, and also import other style files */
+/*------------------------------------------------------------------------------
+  MaterialWrap - Angular 4 Seed Project
+------------------------------------------------------------------------------*/
+//== mixins
+@import '../node_modules/compass-mixins/lib/animate';
+//== Vendor
+@import '../node_modules/multi-brand-colors/dist/scss/index.scss';
+@import '../node_modules/@mdi/font/css/materialdesignicons.css';
+@import '../node_modules/material-design-iconic-font/dist/css/material-design-iconic-font.css';
+//== App
+@import "./app/shared/styles/app";
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900');
+
+md-checkbox {
+  label {
+    margin-bottom: 0;
+    .mat-checkbox-frame {
+      border-width: 1px;
+      border-color: #9dadb5 !important;
+    }
+    .mat-checkbox-ripple {
+      .mat-ripple-element {
+        background: rgba(66, 130, 235, 0.25); /* Old browsers */
+        background: -moz-linear-gradient(left, rgba(66, 130, 235, 0.25) 0%, rgba(5, 187, 252, 0.25) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(left, rgba(66, 130, 235, 0.25) 0%, rgba(5, 187, 252, 0.25) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right, rgba(66, 130, 235, 0.25) 0%, rgba(5, 187, 252, 0.25) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4282eb', endColorstr='#05bbfc', GradientType=1); /* IE6-9 */
+      }
+    }
+  }
+  &.mat-checkbox-checked.mat-accent {
+    .mat-checkbox-background {
+      background-color: #fff;
+      border: 1px solid #9dadb5;
+      .mat-checkbox-checkmark {
+        fill: #2b94f1;
+        .mat-checkbox-checkmark-path {
+          stroke: #2599f3 !important;
+        }
+      }
+    }
+  }
+}
+
+datatable-body {
+  datatable-body-row {
+    .datatable-body-cell {
+      //line-height: 60px;
+      text-align: center !important;
+    }
+  }
+}
+
+
+.footer-section {
+  clear: both;
+  width: 95%;
+  display: block;
+  .footer-bottom {
+    width: 150px;
+    display: inline-block;
+    .load_more {
+      padding: 12px 20px;
+      font-size: 14px;
+      color: #9dadb5;
+      width: 100%;
+      background: transparent;
+      border-radius: 30px;
+      margin-bottom: 25px;
+      font-weight: 100;
+      border: 1px solid rgba(161, 161, 161, 0.35);
+      cursor: pointer;
+      box-shadow: none;
+
+    }
+    .load_more:hover {
+      background: transparent;
+      color: #9dadb5;
+      box-shadow: none;
+    }
+  }
+
+  .footer-bottom-right {
+
+    //width: 250px;
+    display: inline-flex;
+    right: 170px;
+    position: absolute;
+    .add_target {
+      bottom: 20px;
+      left: 105px;
+      padding: 12px 20px;
+      font-size: 14px;
+      color: #fff;
+      width: 100%;
+      background: #6ecf52;
+      background: linear-gradient(to right, #6fbc98 0%, #6fc674 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6fbc98', endColorstr='#6fc674', GradientType=1);
+      border-radius: 30px;
+      margin-bottom: 25px;
+      font-weight: 100;
+      border: 1px solid rgba(161, 161, 161, 0.35);
+      cursor: pointer;
+      box-shadow: none;
+      transition: all .15s ease-in-out;
+    }
+  }
+}
+
+.datatable-body-cell {
+  .datatable-body-cell-label {
+    img.max-w-50 {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+    }
+  }
+}
+
+.liredi {
+  .mat-radio-button {
+    width: 24%;
+    text-align: center;
+    .mat-radio-label {
+      display: block !important;
+      .mat-radio-inner-circle {
+        background-color: #19a9f6;
+      }
+      .mat-radio-outer-circle {
+        border-color: #cfd8e3 !important;
+      }
+
+      .mat-radio-label-content {
+        display: block;
+      }
+    }
+  }
+}
+
+.datatable-body {
+  datatable-selection {
+    .datatable-scroll {
+      width: 100%;
+      //width: 170vh !important;
+    }
+  }
+}
+
+.datatable-header {
+  .datatable-header-inner {
+    width: 100%;
+    display: table;
+    .datatable-row-center {
+      .datatable-header-cell {
+        text-align: center;
+        padding: .5rem 0.2rem;
+      }
+    }
+  }
+}
+.datatable-body{
+  datatable-selection{
+    .datatable-scroll{
+      .datatable-row-wrapper{
+        .datatable-body-row{
+          .datatable-body-cell{
+            text-align: center;
+            padding: .5rem 0.2rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.Button-class {
+  padding-left: 30px !important;
+  display: inline-block;
+  margin: 0 0 30px 0;
+  width:100%;
+  padding-top: 26px;
+  button {
+    padding: 12px 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #fff;
+    border: 0 none;
+    width: 221px;
+    border-radius: 30px;
+    background: #4282eb;
+    background: linear-gradient(to right, #6ed248 0%, #6fbc98 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6ed248', endColorstr='#6fbc98', GradientType=1);
+    cursor: pointer;
+    float: left;
+  }
+  p {
+    float: left;
+    line-height: 2.3;
+    font-size: 19px;
+    color: #596371;
+    margin: 0;
+    text-align: left;
+    font-weight: bold;
+  }
+  .message-btn {
+    border: 1px solid #9dadb5;
+    border-radius: 30px;
+    padding: 13px 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: transparent;
+    color: #9dadb5;
+    margin: 0px 10px;
+    width: auto;
+  }
+  img {
+    height: 12px;
+    padding: 0 5px 0 5px;
+  }
+  i {
+    padding: 0 5px;
+  }
+  .aerrow-btn {
+    border: 1px solid #9dadb5;
+    border-radius: 30px;
+    padding: 13px 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: transparent;
+    color: #9dadb5;
+    margin-right: 15px;
+    width: 20px;
+  }
+  .search-box {
+    border: 1px solid #9dadb5;
+    border-radius: 30px;
+    padding: 13px 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: transparent;
+    color: #9dadb5;
+    margin: 0 15px 0 0px;
+    width: 60px;
+    i {
+      position: relative;
+      //left: -35px;
+      font-size: 17px;
+      color: #abb9c0;
+    }
+  }
+  .search-btn {
+    float: left;
+    //margin: 0 90px 0 0;
+    position: relative;
+    margin-right: 15px;
+    input {
+      width: 200px;
+      padding: 13px 15px;
+      background-color: #fff;
+      border: 0;
+      box-shadow: 1px 1px 7px 6px #eef1f4;
+      border-radius: 100px;
+      //position: absolute;
+    }
+    i {
+      position: absolute;
+      left: -54px;
+      font-size: 17px;
+      color: #abb9c0;
+    }
+    span {
+      line-height: 40px;
+      left: 20px;
+    }
+  }
+  .dropdown-btn {
+    border: 1px solid #9dadb5;
+    border-radius: 30px;
+    padding: 13px 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: transparent;
+    color: #9dadb5;
+    margin: 0 15px 0 70px;
+    width: 110px;
+  }
+  .btn-group {
+    float: left;
+    margin: 0 10px;
+    .custom-btn{
+      margin: 0;
+      width: 160px;
+    }
+  }
+  .dropdown-menu {
+    background-color: #eef1f4;
+  }
+}
+
+.modal-popup {
+  box-shadow: none;
+}
+
+
+.main-billing{
+  .teb_class_payment{
+    //padding:50px 0 0 0;
+    .nav-tabs {
+      border: none;
+      list-style: none;
+      //padding: 0;
+      white-space: nowrap;
+      margin: 0;
+      width: 100%;
+      background: none;
+      box-shadow: none;
+      padding-left: 80px;
+      .nav-item{
+        .nav-link{
+          &:after{
+            content: "";
+            left: 0;
+            height: 2px;
+            position: absolute;
+            width: 100%;
+            bottom: -3px;
+            transition: all;
+            transition-duration: 250ms;
+            background: #3d87ec;
+          }
+          span{
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+}
+
+// -- for tabset on settings page
+.setting-view-tabset{
+  .nav-tabs{
+    .nav-item{
+      .nav-link{
+        color: #9dadb5;
+        &:hover{
+          color:#688696;
+        }
+      }
+    }
+    li.active{
+      a.nav-link.active{
+        color:#5383f2;
+        &:hover{
+          color:#5383f2;
+        }
+        &:after{
+          background-image: linear-gradient(to right, #5383f2 , #44b7ff);
+          height: 3px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-device-width: 1400px) and (max-device-width: 1920px){
+  body {
+    background-color: #000;
+    color: #607188;
+    .app_sidebar-menu-collapsed{
+      .Button-class .dropdown-btn {
+        width: 150px;
+        margin-left:  100px;
+      }
+      .Button-class .search-box {
+        border: 1px solid #9dadb5;
+        border-radius: 30px;
+        padding: 13px 4px;
+        font-weight: 600;
+        text-transform: uppercase;
+        background: transparent;
+        color: #9dadb5;
+        margin: 0 5px 0 0px;
+        width: 80px;
+        //float: right;
+        &:hover{
+          border: 0;
+          background-color: #fff;
+          box-shadow: 0px 3px 17px 0;
+        }
+      }
+      .Button-class .message-btn {
+        margin: 0px 10px;
+        width: 150px;
+        padding: 13px 0px;
+      }
+    }
+    .Button-class {
+      padding-left: 70px;
+      width: 100%;
+    }
+    .Button-class button {
+      padding: 12px 5px 12px 12px;
+      //background: linear-gradient(to right, #6ed248 0%, #6fbc98 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6ed248', endColorstr='#6fbc98', GradientType=1);
+      cursor: pointer;
+      width: 168px;
+    }
+
+    .Button-class .message-btn {
+      margin: 0px 3px;
+      width: 132px;
+      padding: 13px 0px;
+    }
+    .Button-class .search-btn {
+      position: relative;
+      width: 180px;
+      margin-right: 77px;
+    }
+    .Button-class .search-btn input {
+      width: 230px;
+      padding: 13px 15px;
+      background-color: #fff;
+      border: 0;
+      box-shadow: 1px 1px 7px 6px #eef1f4;
+      border-radius: 100px;
+    }
+    .Button-class .btn-group {
+      float: left;
+      margin: 0 10px;
+      .custom-btn{
+        margin: 0;
+        width: 160px;
+      }
+    }
+    .Button-class .search-btn i {
+      left: 100%;
+      top: 13px;
+      right: 0;
+      font-size: 17px;
+      color: #abb9c0;
+      position: absolute;
+    }
+    .Button-class .search-box {
+      border: 1px solid #9dadb5;
+      border-radius: 30px;
+      padding: 13px 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+      background: transparent;
+      color: #9dadb5;
+      margin: 0 5px 0 0px;
+      width: 60px;
+      //float: right;
+      &:hover{
+        border: 0;
+        background-color: #fff;
+        box-shadow: 0px 3px 17px 0;
+      }
+    }
+    .redio-button .liredi .mat-radio-button {
+      margin: 2%;
+      text-align: center;
+    }
+    .liredi .mat-radio-button .mat-radio-label .mat-radio-label-content {
+      display: block;
+      font-size: 10px;
+    }
+    .mat-expansion-panel-body {
+      padding: 0 10px 16px;
+    }
+    /*ngx-datatable.material.ngx-datatable.fixed-header.fixed-row.selectable.checkbox-selection{
+      width: 100% !important;
+      font-size: 12px !important;
+      box-shadow: none;
+      border: 1px solid #e6eaee;
+    }*/
+    .card-datatable
+    .ngx-datatable.material
+    datatable-header
+    .datatable-header-cell
+    .datatable-header-cell-label{
+      font-size: 11px;
+    }
+    .datatable-body-cell {
+      .datatable-body-cell-label {
+        p {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-device-width: 1200px) and (max-device-width: 1399px) {
+  body {
+    background-color: #000;
+    color: #607188;
+    .app_sidebar-menu-collapsed{
+
+      //----excel_page----//
+      .Button-class-excel .message-btn-excel {
+        border: 1px solid #9dadb5;
+        border-radius: 30px;
+        padding: 13px 1px;
+        font-weight: 600;
+        text-transform: uppercase;
+        background: transparent;
+        color: #9dadb5;
+        margin: 0px 4px;
+        width: 101px;
+        font-size: 12px;
+        float: left;
+        .Button-class-excel .message-btn-excel i{
+          padding: 0 6px !important;
+        }
+      }
+      .Button-class-excel .search-btn input {
+        width: 150px;
+        padding: 13px 15px;
+        background-color: #fff;
+        border: 0;
+        box-shadow: 1px 1px 7px 6px #eef1f4;
+        border-radius: 100px;
+        position: relative;
+      }
+
+      //-----excel_page_end-------//
+      .Button-class .dropdown-btn {
+        width: 140px;
+        margin-left:  100px;
+      }
+      .Button-class .search-box {
+        border: 1px solid #9dadb5;
+        border-radius: 30px;
+        padding: 13px 4px;
+        font-weight: 600;
+        text-transform: uppercase;
+        background: transparent;
+        color: #9dadb5;
+        margin: 0 5px 0 0px;
+        width: 80px;
+        //float: right;
+        &:hover{
+          border: 0;
+          background-color: #fff;
+          box-shadow: 0px 3px 17px 0;
+        }
+      }
+    }
+    //------excel_page-------//
+    .Button-class-excel .message-btn-excel {
+      border: 1px solid #9dadb5 !important;
+      border-radius: 30px !important;
+      padding: 8px 10px !important;
+      font-weight: 600!important;
+      text-transform: uppercase !important;
+      background: transparent !important;
+      color: #9dadb5 !important;
+      margin: 0px 4px !important;
+      width: 101px !important;
+      font-size: 14px !important;
+      float: left !important;
+    }
+    .Button-class-excel .message-btn-excel i{
+      //padding: 0 7px !important;
+    }
+    .Button-class-excel .dropdown-btn {
+      border: 1px solid #9dadb5 !important;
+      border-radius: 30px !important;
+      padding: 8px 10px !important;
+      font-weight: 600 !important;
+      text-transform: uppercase !important;
+      background: transparent !important;
+      color: #9dadb5 !important;
+      width: 99px !important;
+      font-size: 14px !important;
+    }
+    .Button-class-excel .search-box {
+      border: 1px solid #9dadb5 !important;
+      border-radius: 30px !important;
+      padding: 8px 4px !important;
+      font-weight: 600 !important;
+      text-transform: uppercase !important;
+      background: transparent !important;
+      color: #9dadb5 !important;
+      margin: 0 5px 0 0px !important;
+      width: 60px !important;
+    }
+    .message-btn-excel-messagebtn {
+      border: 1px solid #9dadb5 !important;
+      border-radius: 30px !important;
+      padding: 8px 10px !important;
+      font-weight: 600 !important;
+      text-transform: uppercase !important;
+      background: transparent !important;
+      color: #9dadb5 !important;
+      margin: 0px 4px !important;
+      width: 140px !important;
+      font-size: 13px !important;
+      float: left !important;
+      i {
+        padding: 0 4px !important;
+      }
+    }
+    .Button-class-excel .search-btn input {
+      width: 132px !important;
+      padding: 11px 15px !important;
+      background-color: #fff !important;
+      border: 0 !important;
+      box-shadow: 1px 1px 7px 6px #eef1f4 !important;
+      border-radius: 100px !important;
+      position: relative !important;
+    }
+    .arrow_btn_excel {
+      //float: right;
+      position: relative;
+      top: 5px;
+      //right: 10px;
+      z-index: 999
+    }
+    .serch-btn-excel{
+      //margin-left: 130px;
+      margin-left: 40px !important;
+    }
+    .mat-checkbox{
+      .mat-checkbox-layout{
+        color: #596472;
+        font-size: 14px;
+      }
+    }
+
+    //---excel_end-------//
+
+    .Button-class button {
+      padding: 12px 5px 12px 5px;
+      //background: linear-gradient(to right, #6ed248 0%, #6fbc98 100%);
+      cursor: pointer;
+      width: 130px;
+    }
+
+    .Button-class .message-btn {
+      margin: 0px 10px;
+      width: 150px;
+      padding: 13px 0px;
+    }
+    .Button-class .search-btn {
+      position: relative;
+      float: left;
+      z-index: 999;
+    }
+    .Button-class .search-btn input {
+      width: 120px;
+      padding: 13px 15px;
+      background-color: #fff;
+      border: 0;
+      box-shadow: 1px 1px 7px 6px #eef1f4;
+      border-radius: 100px;
+    }
+    .Button-class .btn-group {
+      float: left;
+      margin: 0 10px;
+      .custom-btn{
+        margin: 0;
+        width: 160px;
+      }
+    }
+    .Button-class .search-btn i {
+      left: auto;
+      top: 13px;
+      right: 0;
+      font-size: 17px;
+      color: #abb9c0;
+      position: absolute;
+    }
+
+    .redio-button .liredi .mat-radio-button {
+      margin: 2%;
+      text-align: center;
+    }
+    .liredi .mat-radio-button .mat-radio-label .mat-radio-label-content {
+      display: block;
+      font-size: 10px;
+    }
+    .mat-expansion-panel-body {
+      padding: 0 10px 16px;
+    }
+    .card-datatable
+    .ngx-datatable.material
+    datatable-header
+    .datatable-header-cell
+    .datatable-header-cell-label{
+      font-size: 11px;
+      color: #a3b2ba;
+      font-weight: bold;
+    }
+    .datatable-body-cell {
+      .datatable-body-cell-label {
+        p {
+          font-size: 13px;
+          color: #596371;
+        }
+      }
+    }
+    .arrow-btn {
+      float: right;
+      position: relative;
+      top: 5px;
+      //right: 10px;
+      z-index: 999
+    }
+  }
+}
+
+@media screen and (min-device-width: 992px) and (max-device-width: 1199px){
+  body {
+    .Button-class .message-btn {
+      margin: 0px;
+      width: 150px;
+      padding: 10px 0px;
+    }
+    .Button-class .btn-group {
+      float: left;
+      margin: 0 5px;
+      .custom-btn{
+        margin: 0;
+        width: 130px;
+        padding: 12px 14px;
+      }
+    }
+  }
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 991px){
+  body {
+    .Button-class .message-btn {
+      margin: 0px;
+      width: 150px;
+      padding: 10px 0px;
+    }
+  }
+}
+
+@media screen and (min-device-width: 576px) and (max-device-width: 768px){
+  body {
+    .Button-class .message-btn {
+      margin: 5px 0;
+      width: 170px;
+      padding: 10px 0px;
+    }
+    .Button-class .btn-group {
+      margin: 0;
+      .custom-btn{
+        margin: 0;
+        width: 170px;
+      }
+    }
+  }
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 575px){
+  body {
+    .Button-class .dropdown-btn {
+      width: 180px;
+      margin-left: 0;
+    }
+    .Button-class .message-btn {
+      margin: 5px;
+      width: 180px;
+      padding: 10px 0px;
+    }
+    .Button-class .btn-group {
+      margin: 5px;
+      .custom-btn{
+        margin: 0;
+        width: 180px;
+      }
+    }
+  }
+}
