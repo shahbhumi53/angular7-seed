@@ -1,0 +1,55 @@
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+.listName.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+.company-name{
+  &:hover{
+    background-color: #f0f0f0;
+  }
+  color: #333;
+  font-size: 1.02em;
+  position: relative;
+  white-space: nowrap;
+  margin: 0 -16px;
+  padding: 0 10px;
+  .company-logo-img{
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+  }
+  .company-domain{
+    color: #999;
+    font-size: .8em;
+    position: absolute;
+    right: 5px;
+    text-align: right;
+  }
+}
+.add-list-modal{
+    .btn-primary:disabled{
+      background-color: rgba(0, 0, 0, 0.12);
+      color: rgba(0, 0, 0, 0.38);;
+    }
+    .btn-primary {
+      background-color: #0000ffab;
+    }
+}

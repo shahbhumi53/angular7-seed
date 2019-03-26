@@ -27,15 +27,14 @@ export class LeftSidebarComponent implements OnInit {
   ];
   isPriceHide = false;
 
-  constructor(public config: ConfigService, private _elementRef: ElementRef, private _state: GlobalState, public auth: AuthService) {
-    this.config.appLayout.isApp_SidebarLeftCollapsed = true; // --- true means menu is collapsed
-  }
+  constructor(public config: ConfigService, private _elementRef: ElementRef, private _state: GlobalState, public auth: AuthService) { }
 
   ngOnInit() {
     this.isPriceHide = this.hidePricingEmailList.includes(JSON.parse(localStorage.getItem('ajs_user_traits')).traits.user);
   }
 
   toggleMenuSideabar() {
+    debugger
     this.config.appLayout.isApp_SidebarLeftCollapsed = !this.config.appLayout.isApp_SidebarLeftCollapsed;
     this._state.notifyDataChanged('app.isCollapsed', this.config.appLayout.isApp_SidebarLeftCollapsed);
     return false;

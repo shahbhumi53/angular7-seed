@@ -1,0 +1,68 @@
+<div class="add-list-modal">
+  <form [formGroup]="form"
+        #f="ngForm"
+        (ngSubmit)="onClose(f)"
+        class="form-horizontal" >
+    <h2 md-dialog-title>Add List</h2>
+    <mat-dialog-content>
+      <!--<h5>{{data}}</h5>-->
+      <div class="form-group">
+        <label for="txt_company_name">Name*</label>
+        <input type="text"
+               tabindex="1"
+               placeholder="Name"
+               class="form-control"
+               formControlName="txt_company_name"
+               id="txt_company_name">
+      </div>
+      <div class="form-group">
+        <label for="txt_shortDesc">Description</label>
+        <input type="text"
+               tabindex="2"
+               placeholder="List description"
+               class="form-control"
+               formControlName="txt_shortDesc"
+               id="txt_shortDesc">
+      </div>
+      <div class="form-group">
+        <label for="dd_companyAutoComplete">Client's Name</label>
+        <!--for template driven approach to country autocomplete-->
+        <mat-form-field floatPlaceholder="never" class="float-never">
+          <input
+            tabindex="4"
+            formControlName="txt_listName"
+            id="dd_companyAutoComplete"
+            [matAutocomplete]="tdAuto"
+            [(ngModel)]="currentCompany"
+            (ngModelChange)="tdCompany = filterCompanies(currentCompany)"
+            matInput
+            class="form-control"
+            type="text"
+            placeholder="Client's name">
+        </mat-form-field>
+        <!--for template driven approach to country autocomplete-->
+        <!--'displayWith' of undefined matAutocomplete-->
+        <mat-autocomplete #tdAuto="matAutocomplete">
+          <mat-option *ngFor="let aCompany of tdCompany"
+                     (onSelectionChange)="onSelectCompany(aCompany)"
+                     [value]="aCompany.name">
+            <div class="company-name">
+              <span class="company-logo-img"><img [src]="aCompany.logo"></span>
+              <span>{{ aCompany.name }}</span>
+              <span class="company-domain">{{ aCompany.domain }}</span>
+            </div>
+          </mat-option>
+        </mat-autocomplete>
+      </div>
+    </mat-dialog-content>
+    <hr>
+    <mat-dialog-actions>
+      <button type="submit"
+              [disabled]="!f.valid"
+              tabindex="5"
+              class="btn btn-primary"
+              md-raised-button>Create</button>&nbsp;
+      <button class="btn btn-danger" tabindex="6" md-raised-button (click)="onClose(null)">Cancel</button>
+    </mat-dialog-actions>
+  </form>
+</div>

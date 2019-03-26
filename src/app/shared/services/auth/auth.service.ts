@@ -65,6 +65,7 @@ export class AuthService {
 
   private setSession(authResult): Promise<any> {
     return new Promise((resolve, reject) => {
+      debugger
       // -- Set the time that the access token will expire at
       const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
       localStorage.setItem(UtilsService.KEY_ACCESSTOKEN, authResult.accessToken);

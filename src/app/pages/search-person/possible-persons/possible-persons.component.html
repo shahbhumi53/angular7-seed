@@ -1,0 +1,316 @@
+<div class="full-container">
+  <div class="search-results-table">
+    <div class="search-table-heading">
+      <div  style="cursor: pointer; " (click)="onGetBulkEmailClick()"  class="getBulkEmail_btn"><a
+        href="#"><i
+        class="fa fa-envelope-o" style="color: #FFF"></i></a> {{'Get email for selected'}}</div>
+      <div  style="cursor: pointer" (click)="onGetBUlkPhoneClick()" class="getBulkEmail_btn"><a href="#"><i
+        class="fa fa-phone" style="color: #FFF"></i></a> {{'Get phone for selected'}}</div>
+      <!--<div class="search-table-right-check">
+        <ul>
+          <li>
+            <mat-checkbox (change)="onChangeRiskyEmail($event)"
+                         [checked]="riskyEmail">
+            </mat-checkbox>
+            <span>Risky Email</span>
+          </li>
+        </ul>
+      </div>-->
+      <div class="search-select-right-btn"><!-- remove text-center class -->
+        <div *ngIf="lists.length > 0" class="btn-group btn-select-up" dropdown>
+          <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle" style="border-radius: 30px;
+          padding: 17px 63px;     background: linear-gradient(to right, #6fbc98 0%, #6fc674 100%);" >
+            {{selectedListName}} <span class="caret"></span>
+          </button>
+          <ul *dropdownMenu class="dropdown-menu" role="menu">
+            <li *ngFor="let list of lists"
+                value="{{list.id}}"
+                (click)="onSelectListOption(list)"
+                class="dropdown-item">
+              {{list.name}}
+            </li>
+            <li class="dropdown-item" (click)="onAddList()"><a>Create New List</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spinner -->
+    <app-spinner [showSpinner]="showSpinner"></app-spinner>
+
+    <div class="content-body">
+      <div class="card card-datatable">
+        <div *ngIf="!showErrorDiv" class="card-block p-0">
+
+          <ngx-datatable
+            #possiblePersonsTable
+            class='material expandable social'
+            [rows]="rows"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="80"
+            [scrollbarH]="false"
+            [selected]="selected"
+            [selectionType]="'checkbox'"
+            (select)='onSelect($event)'
+            [externalPaging]="true"
+            [count]="page.totalElements"
+            [offset]="page.pageNumber"
+            [limit]="page.size"
+            (page)="pageCallback($event)">
+
+            <!-- Row Detail Template -->
+            <ngx-datatable-row-detail [rowHeight]="auto" #myDetailRow>
+              <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+                <div style="padding-left:40px; padding-top:5px; font-size:14px">
+
+                  <span class="d-block cstm-space-btwn-vartical"><img src="https://image.flaticon.com/icons/svg/993/993854.svg" /> {{row?.company_name}}</span>
+                  <span class="d-block role-extraspace cstm-space-btwn-vartical"><img src="https://image.flaticon.com/icons/svg/701/701997.svg" /> {{row?.role}}</span>
+                  <div class="d-flex">
+                    <span class="cstm-space-btwn-vartical">
+                        <a target="_blank" href="{{row?.linkedin_url}}">
+                          <i class="fa fa-linkedin"></i>
+                        </a>
+                      </span>
+                  </div>
+                  <div class="d-block">
+                    <span (click)="onPhoneNumberClick(row)" class="phone-plus-icon cstm-space-btwn-vartical"
+                          *ngIf="row?.standard_phone_number">
+                      <!-- to open modal on click of phone number -->
+                      <p class="mb-0"
+                         [matTooltipClass]="{'red-tooltip': showExtraClass}"
+                         [matTooltipHideDelay]="hideDelay"
+                         [matTooltipShowDelay]="showDelay"
+                         [matTooltipDisabled]="disabled"
+                         [matTooltipPosition]="position"
+                         [matTooltip]="row?.custom_field?.phoneToDisplay">{{ row?.standard_phone_number }}</p>
+                      <div *ngIf="row?.custom_field?.phones?.length > 1">
+                        <img class="more-phone-plus" src="https://image.flaticon.com/icons/svg/992/992482.svg" alt="More..">
+                      </div>
+                    </span>
+
+                    <!-- if asset is created from email API then display get phone button -->
+                    <span *ngIf="!row?.standard_phone_number" class="cstm-space-btwn-vartical">
+                      <p *ngIf="!row?.displayPhone && row._display !== false" class="get-phone pointer-cursor mb-0"
+                         (click)="onGetPhoneClick(row)">
+                        <a href="#">
+                          <i class="fa fa-mobile"></i>
+                        </a> {{'Get Phone'}}
+                      </p>
+                      <p *ngIf="row?.displayPhone" class="pointer-default mb-0">{{row?._phoneToDisplay}}</p>
+                      <p *ngIf="!row?.displayPhone && row._display !== true && row?._foundErrorCode === false"
+                         class="pointer-cursor mb-0" (click)="goToCerebro(row)">
+                        <a href="#"></a>
+                        <img class="custom-size" src="assets/img/menu_icons/view_in_cerebro.png">{{'Try with Cerebro'}}
+                      </p>
+                      <!--display lock icon if user not suscribed-->
+                      <p *ngIf="(row?._foundErrorCode === true)" class="pointer-cursor mb-0">
+                       <a [routerLink]="['/layout/pricing']"><img class="custom-size" src="/assets/img/LOCKICON.png">
+                         <span class="lock-text">{{'Buy credits'}}</span>
+                       </a>
+                     </p>
+                   </span>
+                  </div>
+                  <div class="d-flex">
+                    <span (click)="onEmailClick(row)" class="custom-cursor-copy phone-plus-icon cstm-space-btwn-vartical" *ngIf="row?.email_perso">
+                      <!-- to open modal on click of phone number -->
+                          <!-- asset is not update because of not adding the putAsset method(giving 502 'internal server error') -->
+                      <p class="mb-0"
+                         [matTooltipClass]="{'red-tooltip': showExtraClass}"
+                         [matTooltipHideDelay]="hideDelay"
+                         [matTooltipShowDelay]="showDelay"
+                         [matTooltipDisabled]="disabled"
+                         [matTooltipPosition]="position"
+                         [matTooltip]="row?.custom_field?.emailToDisplay">{{ row?.email_perso }}</p>
+                      <span *ngIf="row?.custom_field?.emails?.length > 1">
+                        <img class="more-phone-plus" src="https://image.flaticon.com/icons/svg/992/992482.svg" alt="More..">
+                      </span>
+                    </span>
+                    <!-- if asset is created from email API then display get phone button -->
+                    <span *ngIf="!row?.email_perso" class="cstm-space-btwn-vartical">
+                      <p *ngIf="!row?.displayEmail" class="mb-0" style="cursor: pointer" (click)="onGetEmailClick(row)"><a href="#"><i
+                        class="fa fa-envelope-o"></i></a> {{'Get Email'}}</p>
+                      <p *ngIf="row?.displayEmail" style="cursor: default">{{row?._foundEmail}}</p>
+                    </span>
+                </div>
+                </div>
+              </ng-template>
+            </ngx-datatable-row-detail>
+
+            <!-- Column Templates -->
+            <ngx-datatable-column
+              [width]="50"
+              [resizeable]="false"
+              [sortable]="false"
+              [draggable]="false"
+              [canAutoResize]="false">
+              <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+                <a
+                  href="#"
+                  [class.datatable-icon-right]="!expanded"
+                  [class.datatable-icon-down]="expanded"
+                  title="Expand/Collapse Row"
+                  (click)="toggleExpandRow(row)"
+                  class="desktop-hidden">
+                </a>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column headerClass="right-border-search" [sortable]="false" [draggable]="false"
+                                  [resizeable]="false" [flexGrow]="3" [minWidth]="40">
+              <ng-template ngx-datatable-header-template style="display: none; border-right: 2px solid black"
+                           let-value="value" let-allRowsSelected="allRowsSelected"
+                           let-selectFn="selectFn">
+                <mat-checkbox [checked]="allRowsSelected"
+                             (change)="selectFn(!allRowsSelected)"></mat-checkbox>
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
+                           let-onCheckboxChangeFn="onCheckboxChangeFn">
+                <mat-checkbox [checked]="isSelected"
+                             (change)="onCheckboxChangeFn($event)"></mat-checkbox>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column headerClass="right-border-search"  [sortable]="false" name="PHOTO" [flexGrow]="0" [minWidth]="60">
+              <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                <span>{{column.name}}</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template style="width:50%;">
+                <img [src]="row?.custom_field?.displayImg | safe: 'url'" alt="" class="max-w-50 mv-w-40"/>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column [sortable]="true" headerClass="right-border-search" name="NAME" [flexGrow]="3" [minWidth]="100">
+              <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                <span>{{column.name}}</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <p>{{ row?.full_name }}</p>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column headerClass="right-border-search"  [sortable]="false" name="COMPANY" [flexGrow]="0" class="dm-none">
+              <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                <span class="mobile-hidden">{{column.name}}</span>
+              </ng-template>
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <p  class="mobile-hidden">{{ row?.company_name }}</p>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column headerClass="right-border-search"  [sortable]="false" name="ROLE" [flexGrow]="0" class="dm-none">
+              <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                <span class="mobile-hidden">{{column.name}}</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <p  class="mobile-hidden">{{ row?.role }}</p>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column headerClass="right-border-search"  [sortable]="false" name="SOCIAL URL" [flexGrow]="0" class="dm-none">
+              <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                <span class="mobile-hidden">{{column.name}}</span>
+              </ng-template>
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <a target="_blank" href="{{row?.linkedin_url}}"  class="mobile-hidden"> <i class="fa fa-linkedin"></i></a>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column headerClass="right-border-search"  [sortable]="false" name="GET PHONE" [flexGrow]="0" class="dm-none">
+              <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                <span class="mobile-hidden">{{column.name}}</span>
+              </ng-template>
+              <!--get phone button, display tooltip and open contact modal-->
+              <ng-template let-row="row" ngx-datatable-cell-template class="table-last mobile-hidden">
+                <span (click)="onPhoneNumberClick(row)" class="phone-plus-icon mobile-hidden" *ngIf="row?.standard_phone_number">
+                  <!-- to open modal on click of phone number -->
+                  <p
+                     [matTooltipClass]="{'red-tooltip': showExtraClass}"
+                     [matTooltipHideDelay]="hideDelay"
+                     [matTooltipShowDelay]="showDelay"
+                     [matTooltipDisabled]="disabled"
+                     [matTooltipPosition]="position"
+                     [matTooltip]="row?.custom_field?.phoneToDisplay">{{ row?.standard_phone_number }}</p>
+                  <div *ngIf="row?.custom_field?.phones?.length > 1">
+                    <img class="more-phone-plus" src="https://image.flaticon.com/icons/svg/992/992482.svg" alt="More..">
+                  </div>
+                </span>
+                <!-- if asset is created from email API then display get phone button -->
+                <span *ngIf="!row?.standard_phone_number"  class="mobile-hidden">
+                  <p *ngIf="!row?.displayPhone && row._display !== false" class="get-phone pointer-cursor" (click)="onGetPhoneClick(row)">
+                    <a href="#">
+                      <i class="fa fa-mobile"></i>
+                    </a> {{'Get Phone'}}
+                  </p>
+                  <p *ngIf="row?.displayPhone" class="pointer-default">{{row?._phoneToDisplay}}</p>
+                  <p *ngIf="!row?.displayPhone && row._display !== true && row?._foundErrorCode === false" class="pointer-cursor" (click)="goToCerebro(row)">
+                    <a href="#"></a>
+                    <img class="custom-size" src="assets/img/menu_icons/view_in_cerebro.png" >{{'Try with Cerebro'}}
+                  </p>
+                  <!--display lock icon if user not suscribed-->
+                  <p *ngIf="(row?._foundErrorCode === true)" class="pointer-cursor">
+                   <a [routerLink]="['/layout/pricing']"><img class="custom-size" src="/assets/img/LOCKICON.png" >
+                     <span class="lock-text">{{'Buy credits'}}</span>
+                   </a>
+                 </p>
+              </span>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column headerClass="right-border-search"  [sortable]="false" name="GET EMAIL" class="dm-none">
+              <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                <span class="mobile-hidden">{{column.name}}</span>
+              </ng-template>
+              <!--get email button, display tooltip and open contact modal-->
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <span (click)="onEmailClick(row)" class="custom-cursor-copy phone-plus-icon mobile-hidden" *ngIf="row?.email_perso">
+                <!-- to open modal on click of phone number -->
+                  <!-- asset is not update because of not adding the putAsset method(giving 502 'internal server error') -->
+                <p
+                   [matTooltipClass]="{'red-tooltip': showExtraClass}"
+                   [matTooltipHideDelay]="hideDelay"
+                   [matTooltipShowDelay]="showDelay"
+                   [matTooltipDisabled]="disabled"
+                   [matTooltipPosition]="position"
+                   [matTooltip]="row?.custom_field?.emailToDisplay">{{ row?.email_perso }}</p>
+                <span *ngIf="row?.custom_field?.emails?.length > 1">
+                  <img class="more-phone-plus" src="https://image.flaticon.com/icons/svg/992/992482.svg" alt="More..">
+                </span>
+              </span>
+                <!-- if asset is created from email API then display get phone button -->
+                <span *ngIf="!row?.email_perso" class="mobile-hidden">
+                <p *ngIf="!row?.displayEmail" style="cursor: pointer" (click)="onGetEmailClick(row)"><a href="#"><i class="fa fa-envelope-o"></i></a> {{'Get Email'}}</p>
+                <p *ngIf="row?.displayEmail" style="cursor: default">{{row?._foundEmail}}</p>
+              </span>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-footer>
+              <ng-template
+                ngx-datatable-footer-template
+                let-rowCount="rowCount"
+                let-pageSize="pageSize"
+                let-selectedCount="selectedCount"
+                let-curPage="curPage"
+                let-offset="offset"
+                let-isVisible="isVisible">
+                <datatable-pager
+                  [pagerLeftArrowIcon]="'datatable-icon-left'"
+                  [pagerRightArrowIcon]="'datatable-icon-right'"
+                  [pagerPreviousIcon]="'datatable-icon-prev'"
+                  [pagerNextIcon]="'datatable-icon-skip'"
+                  [page]="curPage"
+                  [size]="page.size"
+                  [count]="page.totalElements"
+                  [hidden]="!((rowCount / pageSize) > 1)"
+                  (change)="table.onFooterPage($event)">
+                </datatable-pager>
+              </ng-template>
+            </ngx-datatable-footer>
+          </ngx-datatable>
+        <div style="border: 1px solid #9dadb5;" *ngIf="showErrorDiv" class="card-block p-0">
+          <p class="error-custom">{{ errorMessage }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer-section text-right">
+  <div class="footer-bottom-right">
+  </div>
+</div>

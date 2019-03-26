@@ -1,0 +1,243 @@
+.heading-title {
+  h2 {
+    text-align: center;
+    font-weight: 400;
+    font-size: 32px;
+    margin-bottom: 0;
+  }
+
+}
+
+.main-container {
+  // float: left;
+  margin-bottom: 30px;
+  width: 100%;
+
+  .col-md-12 {
+    .row {
+      .col-md-4 {
+        .image-round {
+          float: left;
+          display: block;
+          width: 100%;
+          margin: 0 auto;
+
+          img {
+            width: 100%;
+            border-radius: 50%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+
+
+  .custom-margin {
+    margin-top: 35px;
+  }
+
+  .custom-margin h5 {
+    margin-top: 15px;
+  }
+
+  .justify-content-end {
+    .col-md-8 {
+      p {
+        margin: 6px 0;
+
+        a {
+          .fa-facebook {
+            border-radius: 50%;
+            //background: #ddd;
+            color: #4867AA;
+            padding: 10px 13px;
+          }
+
+          .fa-linkedin {
+            border-radius: 50%;
+            //background: #ddd;
+            padding: 10px 11px;
+            color: #0077B5;
+          }
+
+          .fa-twitter {
+            border-radius: 50%;
+            //background: #ddd;
+            padding: 10px 10px;
+            color: #1DA1F2;
+          }
+
+          .fa-google-plus {
+            border-radius: 50%;
+            //background: #ddd;
+            color: #DD4E40;
+            padding: 10px 8px;
+          }
+        }
+      }
+
+    }
+  }
+
+  .header-text {
+    float: left;
+
+    p {
+      margin: 6px 0;
+
+      span {
+        font-size: 25px;
+        color: #596371;
+        font-weight: bold;
+      }
+
+      a {
+        .fa-facebook {
+          border-radius: 50%;
+          background: #ddd;
+          color: #4867AA;
+          padding: 10px 13px;
+        }
+
+        .fa-linkedin {
+          border-radius: 50%;
+          background: #ddd;
+          padding: 10px 11px;
+          color: #0077B5;
+        }
+
+        .fa-twitter {
+          border-radius: 50%;
+          background: #ddd;
+          padding: 10px 10px;
+          color: #1DA1F2;
+        }
+
+        .fa-google-plus {
+          border-radius: 50%;
+          background: #ddd;
+          color: #DD4E40;
+          padding: 10px 8px;
+        }
+      }
+    }
+
+    h5 {
+      color: #8b99ab;
+      font-size: 18px;
+      margin-bottom: 0px;
+      font-weight: 600;
+      line-height: 10px;
+    }
+  }
+}
+
+.details {
+  display: table;
+  width: 100%;
+  clear: both;
+  text-align: center;
+  margin: 0 auto;
+
+  .number {
+    width: 50%;
+    float: left;
+    @media screen and (min-width: 320px) and (max-width: 560px) {
+      width: auto;
+    }
+
+    p {
+      margin-bottom: 0;
+
+      .fa {
+        color: #333;
+        margin-right: 15px;
+      }
+    }
+  }
+
+  .email {
+    float: left;
+    width: 50%;
+
+    p {
+      margin-bottom: 0;
+
+      .fa {
+        color: #333;
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
+.mat-dialog-container {
+  border-radius: 5px !important;
+  padding: 24px 24px 45px 24px !important;
+}
+
+.main-container .justify-content-end .col-md-8 p a .fa-linkedin {
+  //box-shadow: 0 0 11px -4px #000;
+  background-color: #fff;
+}
+
+.button-cancel {
+  width: 100%;
+  text-align: right;
+  //padding: 5px;
+}
+
+.button-cancel p {
+  font-weight: 600;
+  font-size: 19px;
+  color: #ddd;
+  cursor: pointer;
+}
+
+.button-cancel p:hover {
+  color: red;
+}
+
+.menu-icon {
+  width: 20px !important;
+}
+
+.custom-fa-icon-size {
+  font-size: 1.5em;
+  margin-right: 17px !important;
+}
+
+// -- for dialogue box
+.samplePanelClass {
+  background-color: red;
+}
+
+.justify-content-end {
+  ul {
+    display: inline-flex;
+    list-style: none;
+    padding: 0;
+
+    li {
+      list-style-type: none;
+      margin-right: 10px;
+
+      p {
+        text-decoration: none;
+        background-color: #FFF;
+        box-shadow: 0px 1px 0px 2px #dedede;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+// -- css for mobile and landline phone icon.
+.mobile-icon {
+  width: 18px;
+}
+
+.landline-icon {
+  width: 16px;
+}

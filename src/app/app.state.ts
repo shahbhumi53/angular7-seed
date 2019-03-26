@@ -4,9 +4,9 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class GlobalState {
 
-  private _data = new Subject<Object>();
+  private _data = new Subject<any>();
   private _dataStream = this._data.asObservable();
-  private _subscriptions: Map<string, Array<Function>> = new Map<string, Array<Function>>();
+  private _subscriptions: Map<string, any> = new Map<string, any>();
 
   constructor() {
     this._dataStream.subscribe((data) => this._onEvent(data));
@@ -24,7 +24,7 @@ export class GlobalState {
     }
   }
 
-  subscribe(event: string, callback: Function) {
+  subscribe(event: string, callback: any) {
     const subscribers = this._subscriptions.get(event) || [];
     subscribers.push(callback);
     this._subscriptions.set(event, subscribers);

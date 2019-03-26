@@ -1,0 +1,207 @@
+<div class="full-container">
+  <div class="search-section">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <div class="search-left">
+        <div class="search-title">
+          <h2>Search</h2>
+        </div>
+        <div class="search-form-left">
+          <ul>
+            <li>
+              <div class="search-input">
+                <!--First Name-->
+                <mat-form-field floatPlaceholder="never" class="float-never">
+                  <input
+                    tabindex="1"
+                    ngModel
+                    #txt_fullName="ngModel"
+                    name="txt_fullName"
+                    id="txt_fullName"
+                    matInput
+                    class="form-control"
+                    type="text"
+                    placeholder="Full Name">
+                </mat-form-field>
+              </div>
+            </li>
+            <li>
+              <div class="search-input">
+                <!--Role-->
+                <mat-form-field floatPlaceholder="never" class="float-never">
+                  <input
+                    tabindex="2"
+                    ngModel
+                    #txt_role="ngModel"
+                    name="txt_role"
+                    id="txt_role"
+                    matInput
+                    class="form-control"
+                    type="text"
+                    placeholder="Role">
+                </mat-form-field>
+              </div>
+            </li>
+            <li>
+              <div class="search-input">
+                <!--company-->
+                <mat-form-field floatPlaceholder="never" class="float-never">
+                  <input
+                    tabindex="3"
+                    ngModel
+                    #txt_company="ngModel"
+                    name="txt_company"
+                    id="txt_company"
+                    matInput
+                    class="form-control"
+                    type="text"
+                    placeholder="company">
+                </mat-form-field>
+              </div>
+            </li>
+            <li>
+              <div class="search-input">
+                <!--Country-->
+                <!--for template driven approach to country autocomplete-->
+                <mat-form-field floatPlaceholder="never" class="float-never">
+                  <input
+                    tabindex="4"
+                    ngModel
+                    #txt_country="ngModel"
+                    name="dd_countryAutoComplete"
+                    id="dd_countryAutoComplete"
+                    [matAutocomplete]="tdAuto"
+                    [(ngModel)]="currentCountry"
+                    (ngModelChange)="tdCountry = filterCountries(currentCountry)"
+                    [disabled]="tdDisabled"
+                    matInput
+                    class="form-control"
+                    type="text"
+                    placeholder="Country">
+                </mat-form-field>
+                <!--for template driven approach to country autocomplete-->
+                <!--'displayWith' of undefined matAutocomplete-->
+                <mat-autocomplete #tdAuto="matAutocomplete">
+                  <mat-option *ngFor="let aCountry of tdCountry" [value]="aCountry.name">
+                    <span>{{ aCountry.name }}</span>
+                  </mat-option>
+                </mat-autocomplete>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="search-right">
+        <div class="search-btn">
+          <!--Submit Button-->
+          <!--validation check: if full name, role and company all 3 are empty or they have white space then search button is disabled-->
+          <button
+            tabindex="4"
+            type="submit"
+            [style.cursor]=" advanceSearchHidden ? ((txt_fullName.value?.trim().length <= 0 && txt_role.value?.trim().length <= 0 && txt_company.value?.trim().length <= 0) ? 'not-allowed' : 'default') : ((txt_fullName.value?.trim().length <= 0 && txt_role.value?.trim().length <= 0 && txt_company.value?.trim().length <= 0 && f.controls.facebook_url?.value?.trim().length <= 0 && f.controls.linkedin_url?.value?.trim().length <= 0 && itemsAsObjectsAll.length <= 0 && itemsAsObjectsAny.length <= 0 && itemsAsObjectsNone.length <= 0) ? 'not-allowed' : 'default')"
+            [disabled]=" advanceSearchHidden ? (txt_fullName.value?.trim().length <= 0 && txt_role.value?.trim().length <= 0 && txt_company.value?.trim().length <= 0) : (txt_fullName.value?.trim().length <= 0 && txt_role.value?.trim().length <= 0 && txt_company.value?.trim().length <= 0 && f.controls.facebook_url?.value?.trim().length <= 0 && f.controls.linkedin_url?.value?.trim().length <= 0 && itemsAsObjectsAll.length <= 0 && itemsAsObjectsAny.length <= 0 && itemsAsObjectsNone.length <= 0)">
+            <i class="search-btn-icon"></i>Search
+          </button>
+        </div>
+      </div>
+      <div class="col-sm-4 col-lg-6 col-xl-2 pull-right advanced">
+        <div class="search-advanced">
+          <a href="#" (click)="AdvanceSearchClick()">- Advanced search</a>
+        </div>
+      </div>
+      <div *ngIf="!advanceSearchHidden" class="main-body-content">
+        <div class="search-left">
+          <div class="hidden-box">
+            <h2>Search</h2>
+          </div>
+          <div class="search-form-left search-form-left-768">
+            <ul>
+              <!-- All of this words -->
+              <li class="search-input-full">
+                <div class="search-input border-none">
+                  <i class="tag-icon"></i>
+                  <tag-input
+                    name="txt_tags"
+                    [ngModel]="itemsAsObjects"
+                    [identifyBy]="'id'"
+                    [secondaryPlaceholder]="'All these words'"
+                    [removable]="true"
+                    [displayBy]="'name'"
+                    (onRemove)="onTagRemove({event: $event, inTextbox: 'all'})"
+                    (onAdd)="onTagAdd({event: $event, inTextbox: 'all'})"></tag-input>
+                </div>
+              </li>
+              <!-- Any of these words -->
+              <li class="search-input-full">
+                <div class="search-input border-none">
+                  <i class="tag-icon"></i>
+                  <tag-input
+                    name="txt_tags"
+                    [ngModel]="itemsAsObjects"
+                    [identifyBy]="'id'"
+                    [secondaryPlaceholder]="'Any of these words'"
+                    [removable]="true"
+                    [displayBy]="'name'"
+                    (onRemove)="onTagRemove({event: $event, inTextbox: 'any'})"
+                    (onAdd)="onTagAdd({event: $event, inTextbox: 'any'})"></tag-input>
+                </div>
+              </li>
+              <!-- None of these words -->
+              <li class="search-input-full">
+                <div class="search-input border-none">
+                  <i class="tag-icon"></i>
+                  <tag-input
+                    name="txt_tags"
+                    [ngModel]="itemsAsObjects"
+                    [identifyBy]="'id'"
+                    [secondaryPlaceholder]="'None of these words'"
+                    [removable]="true"
+                    [displayBy]="'name'"
+                    (onRemove)="onTagRemove({event: $event, inTextbox: 'none'})"
+                    (onAdd)="onTagAdd({event: $event, inTextbox: 'none'})"></tag-input>
+                </div>
+              </li>
+              <div class="search-right info-custom">
+                <!--display info box for explain use of tags-->
+                <div class="search-label">
+                  <i class="fa fa-info-circle" aria-hidden="true"></i>
+                  <p>To use the tags feature, press enter, after each tag</p>
+                </div>
+              </div>
+              <li class="social-btn">
+                <div class="search-input">
+                  <mat-form-field floatPlaceholder="never" class="float-never">
+                    <i class="fb-icon"></i>
+                    <input
+                      matInput
+                      name="facebook_url"
+                      ngModel
+                      class="form-control"
+                      type="text"
+                      placeholder="Facebook url">
+                  </mat-form-field>
+                </div>
+              </li>
+              <li class="social-btn">
+                <div class="search-input">
+                  <mat-form-field floatPlaceholder="never" class="float-never">
+                    <i class="in-icon"></i>
+                    <input
+                      matInput
+                      name="linkedin_url"
+                      ngModel
+                      class="form-control"
+                      type="text"
+                      placeholder="Linkedin url">
+                  </mat-form-field>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- Spinner -->
+  <app-spinner [showSpinner]="showSpinner"></app-spinner>
+
+</div>

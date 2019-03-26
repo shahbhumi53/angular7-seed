@@ -1,6 +1,7 @@
 // Angular
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
   MatAutocompleteModule,
@@ -56,8 +57,6 @@ const AngularMaterialModules = [
 
 import { MalihuScrollbarModule } from 'ngx-malihu-scrollbar';
 
-/*
-*/
 // ngx-bootstrap4
 /*
 import { TabsModule } from 'ngx-bootstrap/tabs';
@@ -69,12 +68,27 @@ import { CookieService } from 'ngx-cookie-service';*/
 
 
 // UI Shared Components
+
+import { AppBackdropComponent } from './components/app_backdrop/app_backdrop.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 import { FooterComponent } from '../layout/footer/footer.component';
+import { DisplayContactComponent } from './components/display-contact/display-contact.component';
+import { AddListFormComponent } from './components/add-list-form/add-list-form.component';
+import { ConfirmBoxComponent } from './components/confirm-box/confirm-box.component';
+import { StartUsePricingInfoComponent } from './components/start-use-pricing-info/start-use-pricing-info.component';
+
+// UI Modules
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
+// PIPES
+import { SafePipe } from './pipes/safe.pipe';
+import { NamePartPipe } from './pipes/name-part.pipe';
+import { ServicesModule } from './services/services.module';
+
 /*
 import { AppBackdropComponent } from './components/app_backdrop/app_backdrop.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import { NamePartPipe } from './pipes/name-part.pipe';
 import { AssetsListService } from './services/httpclient/assets-list.service';
 import { StripeService } from './services/httpclient/stripe.service';
 import { DisplayContactComponent } from '../pages/display-contact/display-contact.component';
@@ -97,54 +111,55 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';*/
     [...AngularMaterialModules],
     CommonModule,
     MalihuScrollbarModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
+    ServicesModule,
+    NgxDatatableModule,
     /*BsDropdownModule.forRoot(),
     AlertModule.forRoot(),
     TabsModule.forRoot(),
     ModalModule.forRoot(),
     PopoverModule.forRoot(),
-    // Angulartics2Module.forRoot([Angulartics2Segment]),
     FileDropModule,
     FormWizardModule,
     ClipboardModule,
-    NgxDatatableModule*/
+    */
   ],
   declarations: [
-    // AppBackdropComponent,
+    AppBackdropComponent,
     FooterComponent,
-    /*NamePartPipe,
+    SpinnerComponent,
     DisplayContactComponent,
     AddListFormComponent,
-    SpinnerComponent,
-    SafePipe,
+    ConfirmBoxComponent,
     StartUsePricingInfoComponent,
-    ConfirmBoxComponent*/
+    NamePartPipe,
+    SafePipe,
   ],
   exports: [
     CommonModule,
     [...AngularMaterialModules],
     MalihuScrollbarModule,
-    /*AppBackdropComponent,
-    TabsModule,
+    ServicesModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxDatatableModule,
+    AppBackdropComponent,
+    SpinnerComponent,
+    ConfirmBoxComponent,
+    StartUsePricingInfoComponent,
+    NamePartPipe,
+    SafePipe,
+    /*TabsModule,
     BsDropdownModule,
     AlertModule,
     ModalModule,
     PopoverModule,
-    NamePartPipe,
-    SpinnerComponent,
-    MatProgressBarModule,
     FileDropModule,
-    SafePipe,
     FormWizardModule,
     NgxDatatableModule*/
   ],
-  providers: [
-    /*AssetsListService,
-    StripeService,
-    AnalyticsService,
-    CookieService,
-    MatProgressBarModule,
-    ImageService,*/
-  ]
+  providers: [ ]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {

@@ -5,7 +5,15 @@ const LAYOUT_ROUTES: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      /*{ path: '', redirectTo: 'search-person', pathMatch: 'full' },
+      { path: '', redirectTo: 'search-person', pathMatch: 'full' },
+      // ----------------------------------------------------------->
+      // -Search Person
+      // ----------------------------------------------------------->
+      {
+        path: 'search-person',
+        loadChildren: '../pages/search-person/search-person-page.module#SearchPersonPageModule'
+      },
+      /*
       // ----------------------------------------------------------->
       // -Block Page
       // ----------------------------------------------------------->
@@ -18,13 +26,6 @@ const LAYOUT_ROUTES: Routes = [
       {
         path: 'dashboards',
         loadChildren: '../pages/dashboards/dashboards.module#DashboardsModule'
-      },
-      // ----------------------------------------------------------->
-      // -Search Person
-      // ----------------------------------------------------------->
-      {
-        path: 'search-person',
-        loadChildren: '../pages/search-person/search-person-page.module#SearchPersonPageModule'
       },
       // ----------------------------------------------------------->
       // -Contacts

@@ -11,9 +11,7 @@ import { ConfigService } from '../shared/services/config/config.service';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor(public config: ConfigService, private _elementRef: ElementRef, private _state: GlobalState) {
-
-  }
+  constructor(public config: ConfigService, private _elementRef: ElementRef, private _state: GlobalState) {  }
 
   ngOnInit() {
   }

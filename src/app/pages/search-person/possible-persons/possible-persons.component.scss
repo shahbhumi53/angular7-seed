@@ -1,0 +1,244 @@
+
+.social {
+  a {
+
+    color: #fff;
+    .fa-linkedin {
+      font-size: 14px;
+      background: #31708f;
+      border-radius: 50%;
+      padding: 5px 7px;
+    }
+    .fa-envelope-o {
+      border-radius: 50%;
+      font-size: 14px;
+      background: #f15151;
+      padding: 5px 5px;
+    }
+    .fa-mobile {
+      border-radius: 50%;
+      font-size: 20px;
+      background: #4bca8f;
+      padding: 3px 8px;
+    }
+  }
+}
+
+.listdropdown {
+  position: absolute;
+  bottom: 36px;
+  right: 170px;
+}
+
+.btn-select-up-text {
+  position: absolute;
+  .footer-bottom-right {
+    .add-target {
+      bottom: 0px;
+      left: 40px;
+      padding: 12px 20px;
+      font-size: 14px;
+      color: #fff;
+      width: 100%;
+      background: #6ecf52;
+      background: linear-gradient(to right, #6fbc98 0%, #6fc674 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6fbc98', endColorstr='#6fc674', GradientType=1);
+      border-radius: 30px;
+      margin-bottom: 25px;
+      font-weight: 100;
+      border: 1px solid rgba(161, 161, 161, 0.35);
+      cursor: pointer;
+      box-shadow: none;
+      transition: all .15s ease-in-out;
+    }
+  }
+}
+
+.custom-size {
+  margin-right: 5px;
+  width: 28px;
+}
+
+ul li a {
+  padding: 0;
+  //text-decoration: none;
+  text-decoration: underline;
+  background-color: transparent;
+  color: #6fbc98 !important;
+  &:hover {
+    text-decoration: underline;
+    background-color: transparent;
+    color: #6fbc98 !important;
+    box-shadow: none !important;
+    cursor: pointer;
+  }
+}
+
+.getBulkEmail_btn {
+  bottom: 0px;
+  padding: 11px 26px;
+  font-size: 14px;
+  color: #fff;
+  background: #6ecf52;
+  background: linear-gradient(to right, #6fbc98 0%, #6fc674 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6fbc98', endColorstr='#6fc674', GradientType=1);
+  border-radius: 30px;
+  margin-bottom: 50px;
+  font-weight: 100;
+  border: 1px solid rgba(161, 161, 161, 0.35);
+  cursor: pointer;
+  box-shadow: none;
+  transition: all .15s ease-in-out;
+  //width: 12%;
+  width: 33%;
+  margin-left: 7px;
+  line-height: 2;
+  text-align: center;
+  white-space: normal;
+  a {
+    margin-right: 5px;
+  }
+}
+
+.search-table-right-check {
+  // width: 26%;
+  width: 10% !important;
+}
+
+// -- plus icon css with phone and email
+.phone-plus-icon {
+  position: relative;
+  display: inline-block;
+  width: calc(100% - 5px);
+  p {
+    float: left;
+    width: calc(100% - 20px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: horizontal;
+    display: -webkit-box;
+    white-space: pre-wrap;
+  }
+  span {
+    img {
+      position: absolute;
+      top: 20px;
+      width: 17px;
+      right: 0;
+    }
+  }
+  div {
+    img {
+      position: absolute;
+      top: 20px;
+      width: 17px;
+      right: 10px;
+    }
+  }
+
+}
+
+// -- lock icon text css
+.lock-text {
+  color: #596371;
+}
+
+@media (min-width: 1270px) {
+  .getBulkEmail_btn {
+    width: 25%;
+    white-space: nowrap;
+  }
+  .search-table-right-check {
+    width: 13% !important;
+  }
+  .search-table-right-check ul li {
+    line-height: 5;
+  }
+}
+
+.pointer-cursor {
+  cursor: pointer
+}
+
+.pointer-default {
+  cursor: default
+}
+
+.error-custom {
+  height: 100%;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  position: relative;
+  top: 8px;
+}
+
+.first-table-span-label{
+  font-size: 11px;
+}
+
+@media screen and (max-width: 800px) {
+  .desktop-hidden {
+    display: initial;
+  }
+  .mobile-hidden {
+    display: none;
+  }
+  .mv-w-40{
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .desktop-hidden {
+    display: none;
+  }
+  .mobile-hidden {
+    display: initial;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .social a {
+    font-size: 20px;
+    color: #000;
+  }
+  .role-extraspace {
+    width: auto;
+    word-break: break-word;
+    white-space: normal;
+  }
+  ::ng-deep.ngx-datatable.material .datatable-body .datatable-row-detail {
+    width: calc(100vw - 44px);
+  }
+
+  ::ng-deep.right-border-search:hover,
+  ::ng-deep.right-border-search{
+    border-right: none;
+  }
+
+  .cstm-space-btwn-vartical{
+    margin: 8px 0;
+  }
+
+  .cstm-space-btwn-vartical i{
+    color: #fff;
+  }
+
+  .cstm-space-btwn-vartical img{
+    width: 9%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+}
+
+::ng-deep.datatable-header-cell {
+  font-size: 11px;
+  div:first-child {
+    padding: .5rem 0.2rem;
+  }
+}

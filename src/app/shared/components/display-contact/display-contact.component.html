@@ -1,0 +1,81 @@
+<div class="button-cancel"><p (click)="onClose()">X</p></div>
+<mat-dialog-content class="custom-border-radius">
+  <div class="main-container">
+    <div class="col-md-12"><div class="row">
+      <div class="col-md-4">
+        <div class="image-round">
+          <img alt="No Image" (error)="updateUrl($event)" *ngIf="profileImageUrl" [src]="profileImageUrl | safe: 'url'">
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="header-text custom-margin">
+          <!-- multiple names are display -->
+          <p>
+            <span>{{contactToDisplay.full_name}}<br></span>
+            <!--<span *ngFor="let name of contactToDisplay?.custom_field?.names; let i = index;">
+              <span *ngIf=" i > 0 ">{{ name }}<br></span>
+            </span>-->
+          </p>
+          <h5>{{ contactToDisplay.company_name }}</h5>
+          <p>{{ contactToDisplay.role }}</p>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="row justify-content-end">
+      <div class="col-md-offset-4 col-md-8">
+        <ul>
+          <li *ngIf="contactToDisplay.linkedin_url && contactToDisplay.linkedin_url !== null"><p>
+            <a [href]="contactToDisplay.linkedin_url" target="_blank">
+              <i class="fa fa-linkedin"></i>
+            </a></p>
+          </li>
+          <li *ngIf="contactToDisplay.facebook_url && contactToDisplay.facebook_url !== null"><p>
+            <a [href]="contactToDisplay.facebook_url" target="_blank">
+              <i class="fa fa-facebook"></i>
+            </a></p>
+          </li>
+
+          <!-- /* which icon need to display is no known */ -->
+          <!--<li *ngIf="contactToDisplay.linkedin_url"><p>-->
+          <!--<a [href]="contactToDisplay.linkedin_url">-->
+          <!--<i class="fa fa-twitter"></i>-->
+          <!--</a></p>-->
+          <!--</li>-->
+          <li *ngIf="contactToDisplay.twitter_url && contactToDisplay.twitter_url !== null"><p>
+            <a [href]="contactToDisplay.twitter_url" target="_blank">
+              <i class="fa fa-twitter"></i>
+            </a></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 custom-cerebro-overflow-data">
+    <div class="details">
+      <div class="number text-left">
+        <div *ngFor="let _phone of contactToDisplay?.custom_field?.phones; let i = index">
+          <p>
+            <!--when phone type is mobile then mobile icon display-->
+            <span *ngIf="contactToDisplay?.custom_field?.phoneswithtype? contactToDisplay?.custom_field?.phoneswithtype[i]['@type'] == 'mobile' : false">
+              <img class="mobile-icon" src="https://image.flaticon.com/icons/svg/1050/1050434.svg">
+            </span>
+            <!--phone type is not mobile then landline icon display-->
+            <span *ngIf="!(contactToDisplay?.custom_field?.phoneswithtype? contactToDisplay?.custom_field?.phoneswithtype[i]['@type'] == 'mobile' : false)">
+              <img class="landline-icon" src="https://image.flaticon.com/icons/svg/223/223124.svg">
+            </span>
+            {{ _phone }}
+          </p>
+        </div>
+      </div>
+      <div class="email text-left">
+        <div *ngFor="let _email of contactToDisplay?.custom_field?.emails">
+          <p><i class="fa fa-envelope"></i>{{ _email }}</p>
+        </div>
+        <div *ngFor="let _semail of contactToDisplay?.custom_field?.secondary_emails">
+          <p><i class="fa fa-envelope"></i>{{ _semail }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>

@@ -1,0 +1,89 @@
+.search-results-table {
+
+  .content-body {
+    .card-datatable {
+      .datatable-body {
+        .datatable-body-row {
+          .datatable-body-cell {
+            padding: 0 !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+.main-body-content {
+  float: left;
+  .hidden-box {
+    width: 100px;
+    margin-right: 40px;
+    float: left;
+    visibility: hidden;
+  }
+  .search-section {
+    .search-right {
+      background-color: #d9edf7 !important;
+    }
+  }
+}
+.ng2-tag-input__text-input{
+  height: 28px;
+}
+.advanced {
+  width: 16%;
+  float: right;
+  margin: 10px 0;
+  .search-advanced {
+
+    a {
+      display: block;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+      background-image: -webkit-gradient(linear, left top, -135deg, color-stop(0%, #6FD344), color-stop(100%, #6FBB9B));
+      background-image: -moz-linear-gradient(-135deg, #6FD344 0%, #6FBB9B 100%);
+      background-image: -webkit-linear-gradient(-135deg, #6FD344 0%, #6FBB9B 100%);
+      background-image: -o-linear-gradient(-135deg, #6FD344 0%, #6FBB9B 100%);
+      background-image: -ms-linear-gradient(-135deg, #6FD344 0%, #6FBB9B 100%);
+      background-image: linear-gradient(-135deg, #6FD344 0%, #6FBB9B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+    }
+  }
+}
+
+// -- css for info box on advance search section
+.info-custom{
+  background-color: #e0e3e4;
+  color: #000;
+  border: 1px solid #9dadb5;
+  z-index: -1;
+  margin-left: 7px !important;
+  width: 98% !important;
+  border-radius: 50px;
+  padding: 0 20px !important;
+  margin: 5px;
+}
+
+.info-custom .search-label{
+  margin: 0 !important;
+}
+
+.info-custom i{
+  font-size: 25px;
+  color: #0cb7fb;
+  position: relative;
+  top: 12px;
+}
+
+.info-custom p{
+  color: #000 !important;
+  margin: 0 4px;
+  text-align: left;
+  position: relative;
+  line-height: 1.3rem !important;
+  left: 22px;
+  bottom: 12px;
+}

@@ -1,0 +1,10 @@
+<div class="add-list-modal">
+    <mat-dialog-content>
+      <p>Are you sure you want to delete <b> {{ data?.list?.name }}</b> list?</p>
+    </mat-dialog-content>
+    <hr>
+    <mat-dialog-actions>
+      <button class="btn btn-primary" md-raised-button (click)="onClose(false)">Cancel</button>&nbsp;
+      <button class="btn btn-danger" md-raised-button (click)="onClose(true)">Delete</button>
+    </mat-dialog-actions>
+</div>

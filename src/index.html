@@ -7,8 +7,35 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- stripe settings -->
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  <!-- analytics settings -->
+  <script>
+    !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t,e){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a);analytics._loadOptions=e};analytics.SNIPPET_VERSION="4.1.0";
+      analytics.load("sJWq04V7x1nf6U7KdDhhmH0cmGuQ2jsF");
+    }}();
+  </script>
+  <script>
+    window.__theme = "bs4";
+  </script>
+  <script async src="//cdn.headwayapp.co/widget.js"></script>
+  <script>
+    var HW_config = {
+      selector: ".CHANGE_THIS", // CSS selector where to inject the badge
+      account: "J3eb9x"
+    }
+  </script>
+  <style>
+    #HW_badge_cont {
+      margin-top: -35px !important;
+      margin-left: 60px !important;
+    }
+  </style>
 </head>
 <body>
-  <app-root></app-root>
+<div id="loader-wrapper" display="none">
+  <div id="loader"></div>
+</div>
+<app-root></app-root>
 </body>
 </html>
